@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#0b1426">
+  <meta name="description" content="Investigue mistérios dos conjuntos em um jogo educativo de cardinalidade, diagramas de Venn e inclusão-exclusão.">
+  <title>Set Detective: The Missing Count</title>
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 40 40'%3E%3Crect width='40' height='40' rx='10' fill='%230b1426'/%3E%3Ccircle cx='17' cy='17' r='9' fill='none' stroke='%2372ebd9' stroke-width='3'/%3E%3Cpath d='m24 24 9 9' stroke='%23f3da79' stroke-width='4' stroke-linecap='round'/%3E%3C/svg%3E">
+  <link rel="stylesheet" href="style.css">
+  <script src="script.js" defer></script>
+</head>
+<body>
+  <a class="skip-link" href="#main">Pular para o conteúdo</a>
+  <header class="site-header">
+    <button class="brand" data-action="home" aria-label="Set Detective — início">
+      <span class="brand-icon" aria-hidden="true"><svg viewBox="0 0 36 36"><circle cx="15" cy="15" r="10"/><path d="m23 23 8 8M11 15h8m-4-4v8"/></svg></span>
+      <span>set<span class="brand-light">detective</span><small>AGÊNCIA DE INVESTIGAÇÃO MATEMÁTICA</small></span>
+    </button>
+    <nav aria-label="Navegação principal">
+      <button class="nav-link" data-action="how">Como jogar <span aria-hidden="true">↗</span></button>
+      <button class="nav-link" data-action="theory">Teoria <span aria-hidden="true">↗</span></button>
+      <span class="header-tag"><i></i> ENSINO MÉDIO</span>
+    </nav>
+  </header>
+  <main id="main" tabindex="-1">
+    <section id="start-screen" class="screen start-screen" aria-labelledby="start-title">
+      <div class="hero">
+        <div class="hero-copy">
+          <p class="eyebrow"><span class="tiny-line"></span> O CASO DOS ELEMENTOS DESAPARECIDOS</p>
+          <h1 id="start-title">Set Detective:<br><em>The Missing<br>Count<span class="yellow">.</span></em></h1>
+          <p class="hero-description">Investigue, conte sem repetir e resolva os mistérios dos conjuntos.</p>
+          <div class="hero-actions"><button class="button primary large" id="play-button" data-action="play">Jogar <span aria-hidden="true">↗</span></button><button class="button text-button" data-action="how"><span class="circle-play" aria-hidden="true">▷</span> Como Jogar</button></div>
+          <button class="restart-link" id="restart-button" data-action="restart" hidden>Recomeçar investigação</button>
+          <div class="hero-footnote"><span class="mini-venn" aria-hidden="true"></span><span>Uma boa pista muda tudo.<br><strong>Uma boa contagem também.</strong></span></div>
+        </div>
+        <div class="case-art" aria-label="Ilustração de um quadro de investigação com um diagrama de Venn" role="img">
+          <div class="art-top"><span>DEPARTAMENTO DE CONJUNTOS</span><span class="art-file">ARQUIVO Nº 001</span></div>
+          <svg class="case-svg" viewBox="0 0 560 500" aria-hidden="true">
+            <defs><pattern id="art-grid" width="25" height="25" patternUnits="userSpaceOnUse"><path d="M25 0H0V25" fill="none" stroke="#5b7494" stroke-opacity=".15"/></pattern><filter id="glow"><feGaussianBlur stdDeviation="5"/></filter></defs>
+            <rect x="15" y="25" width="530" height="440" rx="12" fill="url(#art-grid)"/>
+            <path d="M68 130 400 65 470 320 137 390Z" fill="#121f35" stroke="#3b4c64"/>
+            <path d="M75 133 405 68M138 390 474 320" stroke="#f3d867" stroke-width="4" stroke-dasharray="10 5" opacity=".5"/>
+            <circle cx="230" cy="232" r="116" fill="#51dfcf" fill-opacity=".08" stroke="#65e6da" stroke-width="2"/>
+            <circle cx="356" cy="232" r="116" fill="#8291f8" fill-opacity=".12" stroke="#a4a9fb" stroke-width="2"/>
+            <path d="M293 135a116 116 0 0 1 0 194 116 116 0 0 1 0-194Z" fill="#64e4d3" fill-opacity=".15"/>
+            <text x="167" y="245" fill="#81efe3" font-size="46" font-weight="700" font-family="sans-serif">A</text><text x="388" y="245" fill="#bcc0ff" font-size="46" font-weight="700" font-family="sans-serif">B</text>
+            <text x="294" y="245" fill="#f5dc74" font-size="42" font-weight="700" font-family="sans-serif" text-anchor="middle">?</text>
+            <path d="M70 82h96v36H70Z" fill="#64e4d3" transform="rotate(-10 70 82)"/><text x="82" y="102" transform="rotate(-10 70 82)" fill="#102e33" font-size="13" font-weight="700" font-family="sans-serif">EVIDÊNCIA A</text>
+            <path d="m392 310 63 54" stroke="#070f20" stroke-width="32" stroke-linecap="round"/><path d="m392 310 63 54" stroke="#f2d66d" stroke-width="19" stroke-linecap="round"/>
+            <circle cx="359" cy="276" r="57" fill="#0b172b" fill-opacity=".7" stroke="#f2d66d" stroke-width="8"/><circle cx="359" cy="276" r="46" fill="#5de5d0" fill-opacity=".08" stroke="#f2d66d" stroke-opacity=".3"/>
+            <text x="359" y="287" fill="#f2d66d" font-size="34" font-family="sans-serif" text-anchor="middle">∩</text>
+            <path d="m86 325 5 10 11 2-8 8 1 11-9-5-10 5 2-11-8-8 11-2Z" fill="#f1d56d"/>
+            <path d="m459 116 6-12m0 20 12-3m-22-10-5-8" stroke="#65e6da" stroke-width="2" stroke-linecap="round"/>
+            <path d="M105 425h133m-133 9h87" stroke="#6c809e" stroke-opacity=".45" stroke-width="3"/>
+          </svg>
+          <div class="art-note"><span class="note-pin"></span>Não conte<br>duas vezes!<span class="note-arrow" aria-hidden="true">↗</span></div>
+          <div class="art-bottom"><span><i></i> INVESTIGAÇÃO EM ABERTO</span><span>A ∪ B = ?</span></div>
+        </div>
+      </div>
+      <div class="journey-strip" aria-label="O que você vai encontrar">
+        <div class="journey-intro"><span class="eyebrow">SUA INVESTIGAÇÃO</span><strong>Do primeiro indício<br>ao caso encerrado.</strong></div>
+        <div class="journey-item"><span class="journey-number">01—03</span><div><h2>Três missões</h2><p>Escola, redes e uma grande festa.</p></div></div>
+        <div class="journey-item"><span class="journey-icon" aria-hidden="true">◎</span><div><h2>Conjuntos na prática</h2><p>Preencha, conecte e descubra.</p></div></div>
+        <div class="journey-item"><span class="journey-icon yellow" aria-hidden="true">ϟ</span><div><h2>Desafio final</h2><p>5 casos. 60 segundos por caso.</p></div></div>
+      </div>
+      <footer class="team-footer"><span class="eyebrow">EQUIPE DE INVESTIGAÇÃO</span><p>Samuel Barbosa Mendes Passos <b>·</b> Luan Bruno Lopes Pontes <b>·</b> Francisco Chagas de Souza Santos Filho <b>·</b> Antonio Juliao Martins Neto <b>·</b> João Pedro Silva Peixoto</p><button class="nav-link" data-action="theory">Explorar a teoria <span aria-hidden="true">↗</span></button></footer>
+    </section>
+    <section id="how-screen" class="screen info-screen" aria-labelledby="how-title" hidden>
+      <button class="back-link" data-action="back">← Voltar</button><p class="eyebrow">MANUAL DO DETETIVE</p><h1 id="how-title">Toda pista tem<br><em>o seu lugar.</em></h1><p class="intro">Leia o caso, descubra as quantidades e preencha cada região do diagrama de Venn. Ninguém pode ser contado duas vezes.</p>
+      <div class="instructions-grid"><article class="info-card"><span class="step-number">01</span><h2>Leia as evidências</h2><p>O universo é o grupo inteiro. A cardinalidade, escrita como n(A), é a quantidade de elementos em um conjunto.</p></article><article class="info-card"><span class="step-number">02</span><h2>Comece pelo encontro</h2><p>A interseção reúne quem pertence aos dois conjuntos. Em três conjuntos, comece pela região central, comum aos três.</p></article><article class="info-card"><span class="step-number">03</span><h2>Preencha e confira</h2><p>Digite no diagrama ou no painel de respostas: os campos ficam sincronizados. Use Tab para navegar e “Verificar” para conferir.</p></article></div>
+      <div class="formula-banner"><div><span class="eyebrow">A PISTA PRINCIPAL</span><h2>Some os grupos. Desconte a repetição.</h2><p>Ao somar A e B, a interseção entra duas vezes. Subtraia uma delas.</p></div><strong>n(A ∪ B) = n(A) + n(B) − n(A ∩ B)</strong></div>
+      <div class="info-two-col"><article class="info-card"><h2>Traduzindo os símbolos</h2><p><strong>União (A ∪ B):</strong> quem está em A, em B ou nos dois.</p><p><strong>Diferença (A − B):</strong> quem está em A e não está em B.</p><p><strong>Complementar (Aᶜ):</strong> quem pertence ao universo e não está em A. Pode incluir pessoas que estão em B.</p><p><strong>Fora da união:</strong> quem não pertence a nenhum dos conjuntos.</p></article><article class="info-card"><h2>Pontos, tempo e dicas</h2><p>Cada missão começa valendo <strong>300 pontos</strong>: −30 por verificação incorreta e −20 por dica nova, até o mínimo de 100 ao resolver. Dicas já vistas não custam de novo.</p><p>Nas missões, o relógio registra seu tempo sem limite. No desafio final, são <strong>5 questões de 60 segundos</strong>, valendo 100 pontos cada, com uma tentativa por questão.</p><p>As regiões do desafio são um rascunho opcional; apenas a resposta da pergunta final é avaliada. O relógio pausa ao abrir a ajuda ou a teoria.</p></article></div>
+      <button class="button primary" data-action="back">Voltar <span aria-hidden="true">↩</span></button>
+    </section>
+    <section id="theory-screen" class="screen info-screen" aria-labelledby="theory-title" hidden>
+      <button class="back-link" data-action="back">← Voltar</button><p class="eyebrow">BIBLIOTECA DE PISTAS</p><h1 id="theory-title">Pequenos conceitos.<br><em>Grandes descobertas.</em></h1><p class="intro">Seu guia de bolso para investigar conjuntos com confiança.</p>
+      <div id="theory-cards" class="theory-grid"></div>
+      <div class="theory-example info-card"><div><span class="eyebrow">UM CASO RESOLVIDO</span><h2>10 pessoas. Dois gostos.</h2><p>6 gostam de suco (A), 5 de chá (B) e 3 dos dois.</p><p>Só suco: <strong>6 − 3 = 3</strong>. Só chá: <strong>5 − 3 = 2</strong>.<br>Pelo menos um: <strong>6 + 5 − 3 = 8</strong>.<br>Nenhum: <strong>10 − 8 = 2</strong>.</p><p>O complementar de A tem 4 pessoas: as 2 de só chá e as 2 de nenhum.</p></div><svg viewBox="0 0 440 270" role="img" aria-label="Universo de 10 pessoas: só suco 3, suco e chá 3, só chá 2, nenhum 2"><rect x="10" y="10" width="420" height="250" rx="15" fill="#0a1424" stroke="#43536c"/><text x="28" y="37" fill="#a7b6cd" font-size="14">U = 10</text><circle cx="165" cy="140" r="83" fill="#67e8d5" fill-opacity=".12" stroke="#67e8d5"/><circle cx="275" cy="140" r="83" fill="#a5aaff" fill-opacity=".12" stroke="#a5aaff"/><g fill="#ecf2ff" font-size="24" text-anchor="middle"><text x="130" y="149">3</text><text x="220" y="149">3</text><text x="310" y="149">2</text><text x="385" y="236">2</text></g><g font-size="14" text-anchor="middle"><text x="136" y="69" fill="#67e8d5">A · Suco</text><text x="303" y="69" fill="#b9bdff">B · Chá</text></g></svg></div>
+      <button class="button primary" data-action="back">Voltar <span aria-hidden="true">↩</span></button>
+    </section>
+    <section id="game-screen" class="screen game-screen" aria-labelledby="case-title" hidden>
+      <div class="game-topline"><div><p class="eyebrow" id="mission-kicker">DOSSIÊ 01 / 03</p><h1 id="case-title">Clube Escolar</h1></div><div class="game-stats"><div class="stat"><span>PONTUAÇÃO</span><strong><span id="score">0</span><small> pts</small></strong></div><div class="stat timer-stat"><span id="timer-label">TEMPO DE CASO</span><strong id="timer" role="timer" aria-label="Tempo de caso">00:00</strong></div><button class="help-button" data-action="help" aria-label="Abrir ajuda">?</button></div></div>
+      <ol class="mission-track" id="mission-track" aria-label="Progresso da investigação"></ol>
+      <div class="game-grid">
+        <aside class="clue-panel panel"><div class="panel-heading"><span class="eyebrow">01 / AS EVIDÊNCIAS</span><span aria-hidden="true">⌕</span></div><h2 id="story-title">O mistério</h2><p id="story"></p><div class="clue-divider"><span>PISTAS CONFIRMADAS</span></div><ul id="clues" class="clues"></ul><div class="detective-note"><span aria-hidden="true">✧</span><p id="detective-note">Comece por quem está nos dois grupos.</p></div></aside>
+        <div class="diagram-panel panel"><div class="panel-heading"><span class="eyebrow">02 / CONECTE AS PISTAS</span><span id="diagram-mode" class="small-tag">2 CONJUNTOS</span></div><div class="diagram-caption"><h2>O mapa do caso</h2><p id="diagram-instruction">Digite uma quantidade em cada região.</p></div><div class="venn-legend" id="venn-legend"></div><div id="venn" class="venn"></div><div id="union-slot"></div><div class="diagram-tip"><span aria-hidden="true">↳</span> Cada região representa um grupo diferente. Conte cada pessoa uma única vez.</div></div>
+        <aside class="answer-panel panel"><div class="panel-heading"><span class="eyebrow">03 / SUA DEDUÇÃO</span><span aria-hidden="true">✎</span></div><h2 id="answers-title">Feche a contagem</h2><form id="answer-form" novalidate><div id="answer-fields" class="answer-fields"></div><div id="challenge-question" class="challenge-question" hidden></div><button class="button primary full" type="submit" id="verify-side">Verificar <span aria-hidden="true">✓</span></button><button class="button secondary full" type="button" data-action="hint" id="hint-side">Dica <span aria-hidden="true">✧</span></button></form><div class="feedback" id="feedback" role="status" aria-live="polite" aria-atomic="true">As pistas estão na mesa. Qual é a sua dedução?</div><div id="hint-area" class="hint-area" role="status" aria-live="polite" hidden></div></aside>
+      </div>
+      <section id="explanation" class="explanation" aria-labelledby="explanation-title" hidden></section>
+      <div class="game-bottom"><button class="back-link" data-action="home">← Voltar</button><span class="bottom-note" id="bottom-note">Toda pessoa conta. Uma vez só.</span><div><button class="button secondary" data-action="hint" id="hint-bottom">Dica <span aria-hidden="true">✧</span></button><button class="button secondary" data-action="verify" id="verify-bottom">Verificar <span aria-hidden="true">✓</span></button><button class="button primary" data-action="next" id="next-button" disabled>Próxima Missão <span aria-hidden="true">→</span></button></div></div>
+    </section>
+    <section id="results-screen" class="screen results-screen" aria-labelledby="results-title" hidden><div class="result-badge" aria-hidden="true">✧</div><p class="eyebrow">DOSSIÊ CONCLUÍDO</p><h1 id="results-title">Caso <em>encerrado.</em></h1><p id="personal-message" class="intro"></p><div class="result-stats"><article><span>PONTUAÇÃO TOTAL</span><strong id="final-score">0</strong><small>de 1.400 pontos possíveis</small></article><article><span>PRECISÃO</span><strong id="final-accuracy">0%</strong><small id="accuracy-detail"></small></article><article><span>MELHOR MISSÃO</span><strong id="best-mission" class="best-mission"></strong><small id="best-detail"></small></article></div><div id="result-breakdown" class="result-breakdown"></div><p class="result-note">Precisão = verificações corretas ÷ total de verificações (inclui tempo esgotado). Melhor missão = maior pontuação; em empate, menor tempo.</p><div class="result-actions"><button class="button primary large" data-action="restart">Jogar Novamente <span aria-hidden="true">↻</span></button><button class="button secondary" data-action="home">Voltar ao Início</button></div></section>
+  </main>
+  <dialog id="help-dialog" aria-labelledby="help-title"><div class="dialog-top"><span class="eyebrow">MANUAL RÁPIDO</span><button data-action="close-help" class="close-button" aria-label="Fechar ajuda">×</button></div><h2 id="help-title">Pense como um detetive.</h2><p>Comece pela região comum a todos. Depois encontre as interseções exclusivas e, por último, as regiões de apenas um conjunto.</p><div class="dialog-formula">n(A ∪ B) = n(A) + n(B) − n(A ∩ B)</div><p>Para três conjuntos, subtraia as três interseções de pares e some a interseção tripla:</p><div class="dialog-formula">n(A ∪ B ∪ C) = n(A) + n(B) + n(C) − n(A ∩ B) − n(A ∩ C) − n(B ∩ C) + n(A ∩ B ∩ C)</div><p>As pistas de pares incluem quem está nos três. “Nenhum” é o universo menos a união. O tempo fica pausado enquanto esta ajuda estiver aberta.</p><button class="button primary full" data-action="close-help">Continuar investigação →</button></dialog>
+  <div id="celebration" class="celebration" aria-hidden="true"></div>
+</body>
+</html>

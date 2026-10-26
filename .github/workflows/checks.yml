@@ -1,0 +1,26 @@
+name: Verificar jogo
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  matematica:
+    name: Sintaxe e consistência matemática
+    runs-on: ubuntu-latest
+    steps:
+      - name: Obter código
+        uses: actions/checkout@v4
+      - name: Configurar Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Verificar sintaxe
+        run: node --check script.js
+      - name: Validar missões e 10.000 problemas aleatórios
+        run: node tests/math.test.cjs

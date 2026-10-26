@@ -1,0 +1,12 @@
+# Arquivos locais e credenciais não fazem parte do site.
+.env
+.env.*
+node_modules/
+.openai/
+.sites-runtime/
+.DS_Store
+Thumbs.db
+Desktop.ini
+*.log
+.vscode/
+.idea/

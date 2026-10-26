@@ -1,0 +1,3 @@
+# Mantém o código com as mesmas quebras de linha em Windows, Linux e GitHub.
+* text=auto eol=lf
+*.png binary
